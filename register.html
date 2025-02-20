@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      form {
+        border: 2px solid black;
+        padding: 100px;
+        background-color: steelblue;
+      }
+      h2 {
+        text-align: center;
+        
+      }
+      button {
+        margin-left: 20px;
+      }
+      input {
+        margin: 20px;
+        padding: 10px;
+        width: 100%;
+        outline-style: groove;
+        outline-color: yellowgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="registerform">
+        <h2>REGISTER</h2>
+      <input type="text" id="name" placeholder="ENTER YOUR NAME" required />
+      <input type="password"   id="password"  placeholder="ENTER YOUR PASSWORD" required/>
+      <input type="tel" id="phonenum" placeholder="ENTER YOUR CELL NUMBER" required/>
+      <button type="submit">REGISTER</button>
+      <a href="login.html">go to login</a>
+    </form>
+    <script>
+          function registeruser(r){
+              r.preventDefault()
+
+              let name = document.getElementById("name").value;
+              let userpassword = document.getElementById("password").value;
+              let usernumber = document.getElementById("phonenum").value;
+
+          const user ={
+              name:name,
+              password:userpassword,
+              phonenum:usernumber,
+          }
+
+          localStorage.setItem("user", JSON.stringify(user))
+          alert("Register Successfully")
+          window.location.href="login.html"
+      }
+
+    document.getElementById("registerform").addEventListener("submit", registeruser)
+    </script>
+  </body>
+</html>
