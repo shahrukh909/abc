@@ -6,6 +6,65 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>hello</h2>
+    <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        form {
+          border: 2px solid black;
+          padding: 100px;
+          background-color: steelblue;
+        }
+        h2 {
+          text-align: center;
+          
+        }
+        button {
+          margin-left: 20px;
+        }
+        input {
+          margin: 20px;
+          padding: 10px;
+          width: 100%;
+          outline-style: groove;
+          outline-color: yellowgreen;
+        }
+      </style>
+    </head>
+    <body>
+      <form id="loginform">
+          <h2>REGISTER</h2>
+        <input type="text" id="name" placeholder="ENTER YOUR NAME" required />
+        <input type="password"   id="password"  placeholder="ENTER YOUR PASSWORD" required/>
+        <button type="submit">LOGIN</button>
+        <a href="register.html">Go to register</a>
+      </form>
+      <script>
+            function registeruser(r){
+                r.preventDefault()
+  
+                let name = document.getElementById("name").value;
+                let login = document.getElementById("password").value;
+
+               let user = localStorage.getItem("user")
+  
+               if(user){
+                let parseduser = JSON.parse(user)
+              
+               if(parseduser.password === loginpassword){
+                localStorage.setItem("paseduser", JSON.stringify(parseduser))
+                window.location.href = "index.html"
+               }else{
+                alert("incorrect password")
+               }
+            } else{
+                alert("user not found")
+               }
+            }
+  
+      document.getElementById("loginform").addEventListener("submit", registeruser)
+      </script>
 </body>
 </html>
